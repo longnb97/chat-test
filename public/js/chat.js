@@ -69,7 +69,7 @@ socket.on('newLocationMessage', function (message) {
   scrollToBottom();
 });
 
-jQuery('#message-form').on('submi', function (e) {
+jQuery('#message-form').on('submit', function (e) {
   e.preventDefault();
 
   var messageTextbox = jQuery('[name=message]');
