@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/node:7.10
+      - image: circleci/node:6.2.2
       
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -18,7 +18,10 @@ jobs:
 
     steps:
       - checkout
-
+      - run:
+          name: Deploy Master to Heroku
+          command: |
+            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/messagejs.git master
       # Download and cache dependencies
       - restore_cache:
           keys:
