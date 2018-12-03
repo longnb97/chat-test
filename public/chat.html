@@ -10,7 +10,7 @@
 </head>
 
 <body class="chat">
-
+  <p id="x"></p>
   <div class="chat__sidebar">
     <h3>People</h3>
     <div id="users"></div>
@@ -25,6 +25,7 @@
         <button>Send</button>
       </form>
       <button id="send-location">Send location</button>
+      <button onclick="getLocation()">Send</button>
     </div>
   </div>
 
@@ -52,6 +53,21 @@
         </p>
       </div>
     </li>
+
+    <script>
+      var x = document.getElementById("demo");
+      function getLocation() {
+          if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(showPosition);
+          } else {
+              x.innerHTML = "Geolocation is not supported by this browser.";
+          }
+      }
+      function showPosition(position) {
+          x.innerHTML = "Latitude: " + position.coords.latitude + 
+          "<br>Longitude: " + position.coords.longitude; 
+      }
+      </script>
   </script>
 
   <script src="/socket.io/socket.io.js"></script>
